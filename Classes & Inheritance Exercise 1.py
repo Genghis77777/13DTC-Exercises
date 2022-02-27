@@ -132,9 +132,9 @@ while new_action:
     print("2. Return a book")
     print("3. Add a user")
     print("4. Find a user")
-    print("5. Add a book")
-    print("6. Find a book")
-    print("7. Exit")
+    print("6. Add a book")
+    print("7. Find a book")
+    print("9. Exit")
 
     choice = input("\nWhat would you like to do? \n"
                    "Enter a number: ")
@@ -167,16 +167,4 @@ while new_action:
         print("\n--- That is not a valid choice ---\n")
 
 
-print("------------------USER LIST------------------")
-print_user()
 
-find_book()
-
-add_book()
-
-lend_book()
-
-return_book()
-print("------------------BOOK LIST------------------")
-print_info()
-print("---------------------END---------------------")
