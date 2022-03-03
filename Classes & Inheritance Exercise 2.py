@@ -5,7 +5,7 @@ class Student:
         self.phone_number = phone_number
         self.form_class = form_class
         self.subjects = subjects
-        self.is_male = True
+        self.is_male = is_male  # Fix this
         self.enrolled = True
         student_list.append(self)
 
@@ -15,20 +15,21 @@ class Student:
         print(f"Phone Number: {self.phone_number}")
         print(f"Form Class: {self.form_class}")
         print(f"Subjects: {self.subjects}")
-        print(f"Gender: {self.is_male}")
+        if self.is_male:
+            print("Gender: Male") # Fix this
         print(f"Enrolled: {self.enrolled}\n")
 
 
 def print_student_details():
     for student in student_list:
-        Student.display_info(student)
+        student.display_info()
 
 
 def select_student_age():
     select_age = int(input("Enter the age of the student: "))
     for student in student_list:
         if student.age > select_age:
-            Student.display_info(student)
+            student.display_info()
 
 
 def generate_students():
@@ -49,15 +50,28 @@ def count_students():
     for student in student_list:
         if what_class in student.subjects:
             student_count += 1
-    print(student_count)
+    if student_count == 0:
+        print(f"There are no students in {what_class}")
+    return student_count
+
+
+def find_student():
+    student_to_find = input("Enter the name of the student: ").title()
+    for student in student_list:
+        if student.name == student_to_find:
+            student.display_info()
+        else:
+             print("Sorry, there's no student by that name.")
 
 # Main Routine
 student_list = []
 generate_students()
 
 print("-----------Select Students-------------")
-select_student_age()
+# select_student_age()
+print("------------Find Student---------------")
+# find_student()
 print("-----------Student Details-------------")
-print_student_details()
+# print_student_details()
 print("------------Count Students-------------")
 count_students()
