@@ -27,9 +27,12 @@ def print_student_details():
 
 def select_student_age():
     select_age = int(input("Enter the age of the student: "))
+    student_count = 0
     for student in student_list:
         if student.age > select_age:
             student.display_info()
+            student_count += 1
+    print(f"There are {student_count} students aged over {select_age}")
 
 
 def generate_students():
@@ -57,21 +60,52 @@ def count_students():
 
 def find_student():
     student_to_find = input("Enter the name of the student: ").title()
+    found = False
     for student in student_list:
         if student.name == student_to_find:
             student.display_info()
-        else:
-             print("Sorry, there's no student by that name.")
+            found = True
+    if not found:
+        print("Sorry, there's no student by that name.")
+
 
 # Main Routine
 student_list = []
 generate_students()
 
-print("-----------Select Students-------------")
-# select_student_age()
-print("------------Find Student---------------")
-# find_student()
-print("-----------Student Details-------------")
-# print_student_details()
-print("------------Count Students-------------")
-count_students()
+main_menu = True
+
+while main_menu:
+    print("------------------WELCOME-------------------")
+    print("Welcome to the Main Menu for the Student System!\n\n"
+          "Please select one of the options below by typing in the number\n"
+          "corresponding to the function you would like to select.")
+
+    print("\n1. Select Student Age")
+    print("2. Find Student")
+    print("3. See Student Details")
+    print("4. Count Students")
+    print("5. Exit\n")
+
+    menu_choice = int(input("Where would you like to go (type a number 1-5, below)? \n"))
+
+    if menu_choice == 1:
+        print("-----------Select Student Age------------")
+        select_student_age()
+    elif menu_choice == 2:
+        print("--------------Find Student---------------")
+        find_student()
+    elif menu_choice == 3:
+        print("-----------Student Details-------------")
+        print_student_details()
+    elif menu_choice == 4:
+        print("------------Count Students-------------")
+        count_students()
+    elif menu_choice == 5:
+        confirm_exit = input("Are you sure you want to exit (Type 'Y' or 'N')? ").upper()
+        if confirm_exit == "Y":
+            print("Goodbye")
+            main_menu = False
+    else:
+        print("That is not a valid choice.")
+
