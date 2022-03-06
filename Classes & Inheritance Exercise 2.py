@@ -5,7 +5,7 @@ class Student:
         self.phone_number = phone_number
         self.form_class = form_class
         self.subjects = subjects
-        self.is_male = is_male  # Fix this
+        self.is_male = is_male
         self.enrolled = True
         student_list.append(self)
 
@@ -69,6 +69,21 @@ def find_student():
         print("Sorry, there's no student by that name.")
 
 
+def add_student():
+    name = input("Enter the name of the new student: ").title()
+    age = int(input("Enter then age of the new student: "))
+    phone_number = input("Enter the phone number of the new student: ")
+    form_class = input("Enter the form class of the new student: ")
+    subjects = input("Enter the subjects of the new student: ")
+    is_male = input("Enter the gender of the new student ('M' or 'F'): ")
+    if is_male == "M":
+        is_male = True
+    else:
+        is_male = False
+    Student(name, age, phone_number, form_class, subjects, is_male)
+    print(f"{name} has been added to the student list!")
+
+
 # Main Routine
 student_list = []
 generate_students()
@@ -85,7 +100,8 @@ while main_menu:
     print("2. Find Student")
     print("3. See Student Details")
     print("4. Count Students")
-    print("5. Exit\n")
+    print("5. Add Student")
+    print("6. Exit\n")
 
     menu_choice = int(input("Where would you like to go (type a number 1-5, below)? \n"))
 
@@ -96,12 +112,15 @@ while main_menu:
         print("--------------Find Student---------------")
         find_student()
     elif menu_choice == 3:
-        print("-----------Student Details-------------")
+        print("------------Student Details--------------")
         print_student_details()
     elif menu_choice == 4:
-        print("------------Count Students-------------")
+        print("-------------Count Students--------------")
         count_students()
     elif menu_choice == 5:
+        print("--------------Add Students---------------")
+        add_student()
+    elif menu_choice == 6:
         confirm_exit = input("Are you sure you want to exit (Type 'Y' or 'N')? ").upper()
         if confirm_exit == "Y":
             print("Goodbye")
