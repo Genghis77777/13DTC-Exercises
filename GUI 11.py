@@ -20,7 +20,6 @@ goal = IntVar()
 current.set(0)
 goal.set(71)
 
-
 Label(root, textvariable=current, fg="white", bg="blue", font=("Arial", 24)).pack(side=LEFT)
 
 Button(root, text="x7", font=("Arial", 24), command=lambda: change("7")).pack(side=LEFT)

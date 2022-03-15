@@ -14,7 +14,7 @@ root.geometry("300x90")
 # Dropdown menu options
 options = ["Cheese", "Beef", "Chicken", "Egg", "Lettuce", "Tomato", "Avocado"]
 
-clicked = StringVar
+clicked = StringVar()
 
 clicked.set("Choose filling...")
 
